@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access required</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding-top: 50px; /* Reduzindo o espaço superior */
+        }
+        .login-form {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 200px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+        .hidden {
+            display: none;
+        }
+        /* Estilos adicionados */
+        #logo {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Adicionando a imagem -->
+<div id="logo">
+    <img src="https://i.pinimg.com/736x/69/27/95/692795bd1ce94265e2cb349793bca464.jpg" alt="Logo" width="200">
+</div>
+
+<div class="login-form" id="loginForm">
+
+    <form>
+        <div class="input-group">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn">Entrar</button>
+    </form>
+    <div class="message hidden" id="accessGrantedMessage">Acesso Autorizado</div>
+</div>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username.trim() === "arthur finch" && password.trim() === "438736") {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("accessGrantedMessage").classList.remove("hidden");
+            displaySecret();
+            setTimeout(function() {
+                document.getElementById("accessGrantedMessage").classList.add("hidden");
+            }, 3000); // Oculta a mensagem após 3 segundos
+        } else {
+            alert("ACESSO NEGADO");
+        }
+    });
+
+    function displaySecret() {
+        var secretText = `
+            <div id="secretContent">
+                <h2><span style="color: red; font-weight: bold;">Nome do Ritual:</span> ??? (Titulo provisorio de "Ressurreicao")</h2>
+                <p><strong>Elemento do Ritual:</strong> Medo ou Morte (???)</p>
+                <p><strong>Circulo:</strong> ??? (Provavelmente nao ha circulo especifico)</p>
+                <p><strong>Custo em PE:</strong> ??? (Pela descricao parece ser 0)</p>
+                <h3 style="color: red; font-weight: bold;">Transferencia de Tempo</h3>
+                <p>O usuario que conjura este ritual usa toda sua energia corporea e mental para dar ao receptor deste ritual uma chance de vida novamente,restaurando e curando qualquer doenca, deficiencia ou seja qual for o problema,como consequencia a pessoa que usa este ritual ira abrir mao de parte de seu conhecimento paranormal,de sua vida e seu tempo de vida restante sera cortado pela metade</p>
+                <h3>O Valor de Uma Alma/Brincar com a Morte</h3>
+                <p>O usuario deste ritual concentra todo seu ser, essencia, mente e alma, assim fazendo um ultimo esforco e sacrificio, trazendo assim de volta uma pessoa dos mortos que nao tenha partido a muito tempo atras, o usuario do ritual se doa por completo ficando assim com apenas um curto tempo de vida e fazendo assim uma coisa ate entao impossivel, trazendo alguem de volta,com todas as suas memorias, desejos e 100% restaurado,apenas nao se lembrando do dia de sua morte</p>
+            </div>
+        `;
+        var secretContent = document.createElement("div");
+        secretContent.innerHTML = secretText.trim();
+        document.body.appendChild(secretContent);
+    }
+</script>
+
+</body>
+</html>
